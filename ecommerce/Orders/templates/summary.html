@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <h3>Order Placed successfully</h3>
+            {% for key,val in order_details.items() %}
+       <div>
+           <h3>{{ val[0] }}</h3>
+             <div class="media-container">
+                {% for pic in val[1] %}
+                    <img src="data:;base64,{{ pic }}" width="200" height="100">
+                {% endfor %}
+             </div>
+           <h3>{{ val[2] }}</h3>
+           <h3>Quantity {{ val[3] }}</h3>
+           <h3>Price {{ val[3] * val[4]}}</h3>
+       </div>
+       <br>
+    {% endfor %}
+    <h3>Delivering to {{address}}</h3>
+<a href="{{ url_for('general.home') }}">Click to go back to home</a>
+</div>
+{% endblock %}

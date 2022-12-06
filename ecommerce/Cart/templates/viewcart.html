@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <h1>User Cart</h1>
+    <form method = 'POST'>
+        {{ form.csrf_token }}
+    {% for key,val in cart.items() %}
+        <div class="card">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="data:;base64,{{ val[1][0] }}" width="200" height="100">
+                </div>
+
+                <div class="col-md-8">
+                    <h3 class="card-title mt-2">{{val[0]}}</h3>
+                    <h3 class="card-title mt-2">Quantity : {{val[2]}}</h3>
+
+                        {{form.remove(class="btn btn-danger", value = val[0])}}
+
+                </div>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+        {{form.buyall(class="btn btn-success")}}
+    </form>
+    </div>
+{% endblock %}

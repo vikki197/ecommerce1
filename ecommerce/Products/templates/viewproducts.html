@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+
+    <div class="content-section">
+
+        <h2 class="title">Search results for {{name}}</h2>
+        <br>
+
+           {% for key,val in pictures.items() %}
+           <div>
+               <a href="{{ url_for('products.product',pid=val[-1]) }}">{{ val[0] }}</a>
+               <div class="media-container">
+               {% for pic in val[1] %}
+                    <img src="data:;base64,{{ pic }}" width="200" height="100">
+                {% endfor %}
+                </div>
+               <h2>{{ val[2] }}</h2>
+           </div>
+            <br>
+           {% endfor %}
+       </div>
+    </div>
+
+{% endblock %}

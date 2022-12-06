@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+
+    <div class="content-section">
+
+        <h2 class="title">Inventory Page</h2>
+        <br>
+
+           {% for key,val in pictures.items() %}
+           <div>
+               <h1>{{ val[0] }}</h1>
+               <div class="media-container">
+               {% for pic in val[1] %}
+                    <img src="data:;base64,{{ pic }}" width="200" height="100">
+                {% endfor %}
+                </div>
+               <h2>{{ val[2] }}</h2>
+           </div>
+            <br>
+           {% endfor %}
+       </div>
+    </div>
+
+    <div class = "side-form">
+        <div id="availability">{{available}}</div>
+
+        <form method="POST" action="" enctype="multipart/form-data">
+          {{form.csrf_token}}
+          <fieldset class="form-field">
+              {{ form.qty.label }}
+              {{ form.qty }}
+              {% if form.qty.errors %}
+                <ul class="errors">
+                    {% for error in form.qty.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+          </fieldset>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                $("#qty").keyup(function(e){
+
+
+                $.ajax({
+                data : {quantity: $('#qty').val()},
+                type : 'POST',
+                url  : '/'
+                });
+
+                .done (function(data) {
+                 $('availability').text(data.output).show();
+                });
+                e.preventDefault();
+                });
+
+                });
+            </script>
+
+
+
+          {{ form.cart(class="btn btn-outline-info") }}
+            <br>
+            <br>
+            {{ form.buy(class="btn btn-outline-info") }}
+
+      </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+<h1>Welcome to the ecommerce site</h1>
+    <div class="search-section">
+    <form class="search-form-inline" method="POST" action="" enctype="multipart/form-data">
+          {{form.csrf_token}}
+
+          <fieldset class="form-field">
+              {{ form.search }}
+              {% if form.search.errors %}
+                <ul class="errors">
+                    {% for error in form.search.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+          </fieldset>
+
+          {{ form.submit(class="product-submit") }}
+    </form>
+    </div>
+
+</div>
+{% endblock %}

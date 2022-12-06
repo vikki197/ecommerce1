@@ -1,0 +1,104 @@
+{% extends 'adminlayout.html' %}
+
+
+{% block content %}
+
+    <div class="content-section">
+      <h2 class="title">Product Form</h2>
+
+      <form method="POST" action="" enctype="multipart/form-data">
+          {{form.csrf_token}}
+
+          <fieldset class="form-field">
+              {{ form.pid.label }}
+              {{ form.pid }}
+              {% if form.pid.errors %}
+                <ul class="errors">
+                    {% for error in form.pid.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">
+              {{ form.pname.label }}
+              {{ form.pname }}
+              {% if form.pname.errors %}
+                <ul class="errors">
+                    {% for error in form.pname.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">
+              {{ form.pics.label }}
+              {{ form.pics }}
+              {% if form.pics.errors %}
+                <ul class="errors">
+                    {% for error in form.pics.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+          </fieldset>
+
+
+          <fieldset class="form-field">
+              {{ form.manufacturer.label }}
+              {{ form.manufacturer }}
+              {% if form.manufacturer.errors %}
+                <ul class="errors">
+                    {% for error in form.manufacturer.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+          </fieldset>
+
+
+          <fieldset class="form-field">
+              {{ form.manufacturer_address.label }}
+              {{ form.manufacturer_address }}
+              {% if form.manufacturer_address.errors %}
+                <ul class="errors">
+                    {% for error in form.manufacturer_address.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+          </fieldset>
+
+          <fieldset class="form-field">
+              {{ form.description.label }}
+              {{ form.description }}
+              {% if form.description.errors %}
+                <ul class="errors">
+                    {% for error in form.description.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+          </fieldset>
+
+
+          <fieldset class="form-field">
+              {{ form.quantity.label }}
+              {{ form.quantity }}
+              {% if form.quantity.errors %}
+                <ul class="errors">
+                    {% for error in form.quantity.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+          </fieldset>
+
+          {{ form.submit }}
+
+      </form>
+    </div>
+
+{% endblock %}

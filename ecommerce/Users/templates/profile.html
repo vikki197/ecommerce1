@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+<form method = 'POST', action="">
+    {{form.csrf_token}}
+    <fieldset class = 'form-group'>
+        <div class = 'form-group'>
+            {{form.mail.label(class="form-control-label")}}
+            {% if form.mail.errors %}
+                {{form.mail(class="form-control form-control-lg is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.mail.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.mail(class="form-control form-control-lg", value=current_values[0])}}
+            {% endif %}
+        </div>
+
+        <div class = 'form-group'>
+            {{form.name.label(class="form-control-label")}}
+            {% if form.name.errors %}
+                {{form.name(class="form-control form-control-lg is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.name.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.name(class="form-control form-control-lg", value=current_values[1])}}
+            {% endif %}
+        </div>
+
+
+        <div class = 'form-group'>
+            {{form.age.label(class="form-control-label")}}
+            {% if form.age.errors %}
+                {{form.age(class="form-control form-control-lg is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.age.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.age(class="form-control form-control-lg", value=0)}}
+            {% endif %}
+        </div>
+
+        <div class = 'form-group'>
+            {{form.gender.label(class="form-control-label")}}
+            {% if form.gender.errors %}
+                {{form.gender(class="form-control form-control-lg is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.gender.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.gender(class="form-control form-control-lg", value=current_values[3])}}
+            {% endif %}
+        </div>
+
+
+        {{form.submit(class="btn btn-outline-info")}}
+    </fieldset>
+</form>
+    <a href="{{ url_for('user.addresses') }}">Click to modify the address</a>
+</div>
+{% endblock %}

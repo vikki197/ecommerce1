@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    {% for key,val in pictures.items() %}
+       <div>
+           <h1>{{ val[0] }}</h1>
+             <div class="media-container">
+                {% for pic in val[1] %}
+                    <img src="data:;base64,{{ pic }}" width="200" height="100">
+                {% endfor %}
+             </div>
+           <h2>{{ val[2] }}</h2>
+       </div>
+       <br>
+    {% endfor %}
+
+    <h3> Total Number of Items {{qty}}</h3>
+    <br>
+
+    <h3> Total Amount {{price}} </h3>
+    <br>
+
+    <!--<h3>Manufactured by {{manufacturer[0]}} @ {{manufacturer[1]}}</h3>-->
+
+    <h3>Deliver to</h3>
+
+    <form class="buy-form" method="POST" action="" enctype="multipart/form-data">
+          {{form.csrf_token}}
+
+          <fieldset class="form-field">
+              {{ form.delivery_address(class="form-control form-control-lg") }}
+
+          </fieldset>
+            <br>
+
+          {{ form.buy(class="btn btn-outline-info") }}
+    </form>
+    </div>
+</div>
+{% endblock %}

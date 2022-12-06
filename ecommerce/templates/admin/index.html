@@ -1,0 +1,6 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+<a href="{{ url_for('inventory.add_products') }}">Add Products</a>
+<br>
+<a href="{{ url_for('inventory.inventorylogout') }}">Admin Logout</a>
+{% endblock %}

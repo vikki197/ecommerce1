@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <h3>Your Order</h3>
+    <img src="data:;base64,{{ val[0][1][0] }}" width="200" height="100">
+    <br>
+    <h3>Product name: {{val[0][0]}}</h3>
+    <br>
+    <h3>Product price: {{val[0][2]}}</h3>
+    <br>
+    <h3>Product price: {{val[0][3]}}</h3>
+    <br>
+    <h3>Purchase date: {{val[0][4]}}</h3>
+    <br>
+    <h3>Delivery Address: {{val[0][5]}}</h3>
+    <br>
+    <h3>Manufactured by: {{val[0][6]}}</h3>
+    <br>
+    <h3>Manufacturer Address: {{val[0][7]}}</h3>
+    <br>
+</div>
+{% endblock %}

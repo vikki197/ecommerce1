@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <h3>Your Order history</h3>
+    {% for key,val in order_history.items() %}
+        <div class="card">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="data:;base64,{{ val[1][0] }}" width="200" height="100">
+                </div>
+
+                <div class="col-md-8">
+                    <h3 class="card-title mt-2">{{val[0]}}</h3>
+                    <h3 class="card-title mt-2">Quantity : {{val[2]}}</h3>
+                    <a href="{{ url_for('orders.order_info',ordid=val[3]) }}">Click to get specific order details</a>
+                </div>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+</div>
+{% endblock %}
